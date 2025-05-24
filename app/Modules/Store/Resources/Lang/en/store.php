@@ -1,0 +1,33 @@
+<?php
+
+return [
+         'title'=>'Offices', 
+        'newOne'=>'Add New Office', 
+        'form' => [
+            'seller' => 'Office Manager',
+            'state' => 'State',
+            'city' => 'City',
+            'country' => 'Country',
+            'description_ar' => 'Description Ar',
+            'description_en' => 'Description En',
+            'address' => 'Address',
+            'work_hours' => 'Work Hours',
+            'off_days' => 'Off Days',
+            'sat' => 'Saturday',
+            'sun' => 'Sunday',
+            'mon' => 'Monday',
+            'tues' => 'Tuesday',
+            'wed' => 'Wednesday',
+            'thur' => 'Thursday',
+            'fri' => 'Friday',
+            'from' => 'From ',
+            'to' => 'To',
+            'lat' => 'Latitude',
+            'lng' => 'Longitude',
+            'employees' => 'Employees',
+            'address_ar' => 'Address Ar',
+            'address_en' => 'Address En',
+            'work_from_error' => 'Please Enter Valid Work From Time for Day ',
+            'work_to_error' => 'Please Enter Valid Work To Time for Day ',
+        ],
+];

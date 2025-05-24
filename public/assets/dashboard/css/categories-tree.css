@@ -1,0 +1,30 @@
+.checkbox-list .checkbox{
+    margin-bottom: 0;
+}
+.btn-default{
+    z-index: 50;
+    width: 20px !important;
+    height: 20px !important;
+}
+.catRow {
+    background-position: -292px -4px;
+    background-repeat: repeat-y;
+}
+html[dir="rtl"] .catRow {
+    background-image: unset;
+}
+.fixButtons {
+    margin-top: -25px !important;
+}
+.tree-icon {
+    color: #3f4254;
+    font-size: 1.3rem;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-position: -68px -4px;
+}
+.checkbox.parent{
+    font-weight:bold;
+    font-size: 14px;
+}

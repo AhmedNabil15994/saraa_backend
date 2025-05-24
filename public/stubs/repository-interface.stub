@@ -1,0 +1,13 @@
+<?php
+
+namespace {{namespace}};
+
+interface {{modelName}}RepositoryInterface {
+    public function getAll($request);
+    public function getById($id);
+    public function create(array $attributes);
+    public function update($id, array $attributes);
+    public function delete($id);
+    public function destroy($id);
+    public function restore($id);
+}

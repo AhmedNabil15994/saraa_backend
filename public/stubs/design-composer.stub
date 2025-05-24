@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Modules\{{modelName}}\ViewComposers;
+
+use Illuminate\View\View;
+use Cache;
+use App\Repositories\{{modelName}}CrudRepository;
+
+class {{modelName}}DesignComposer
+{
+    public $designElems = [];
+
+    public function __construct({{modelName}}CrudRepository  $crudDesign)
+    {
+        $this->designElems = $crudDesign->getSpecificData(['all']);
+    }
+
+    /**
+     * Bind data to the view.
+     *
+     * @param  View  $view
+     * @return void
+     */
+    public function compose(View $view)
+    {
+        $view->with('designElems' , $this->designElems);
+    }
+}

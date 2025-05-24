@@ -1,0 +1,118 @@
+<?php
+
+namespace {{namespace}};
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use DataTables;
+use App\Repositories\Eloquent{{modelName}}Repository;
+use App\Transformers\{{modelName}}Resource;
+
+class {{modelName}}Controller extends Controller {
+
+    protected ${{modelNameLower}}Repo;
+    protected $errors;
+
+    public function __construct(Eloquent{{modelName}}Repository ${{modelNameLower}}Repo) {
+        $this->{{modelNameLower}}Repo = ${{modelNameLower}}Repo;
+    }
+
+    public function index(Request $request) {
+        if($request->ajax()){
+            ${{modelPlural}} = $this->{{modelNameLower}}Repo->dataList($request);
+            return Datatables::of({{modelName}}Resource::collection(${{modelPlural}}))->make(true);
+        }
+        ${{modelPlural}} = $this->{{modelNameLower}}Repo->getAll($request);
+        return view('{{moduleName}}::index', compact('{{modelPlural}}'));
+    }
+
+    public function create() {
+        return view('{{moduleName}}::create');
+    }
+
+    public function store(Request $request) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->create($request);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors->first());
+            return redirect()->back()->withInput();
+        }
+        \Session::flash('success',trans('Dashboard::dashboard.addSuccess'));
+        return redirect()->back();
+    }
+
+    public function edit($id) {
+        $model = $this->{{modelNameLower}}Repo->getById($id);
+        if(!$model){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors);
+            return redirect()->back()->withInput();
+        }
+        return view('{{moduleName}}::edit', compact('model'));
+    }
+
+    public function update(Request $request, $id) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->update($request,$id);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors->first());
+            return redirect()->back()->withInput();
+        }
+
+        \Session::flash('success',trans('Dashboard::dashboard.editSuccess'));
+        return redirect()->back();
+    }
+
+    public function delete(Request $request,$id) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->delete($id);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors);
+            return redirect()->back()->withInput();
+        }
+
+        if($request->ajax()){
+            return \TraitsFunc::SuccessMessage(trans('Dashboard::dashboard.deleteSuccess'));
+        }
+
+        \Session::flash('success',trans('Dashboard::dashboard.deleteSuccess'));
+        return redirect()->back();
+    }
+
+    public function restore($id) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->restoreSoftDelte($id);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors);
+            return redirect()->back()->withInput();
+        }
+        \Session::flash('success',trans('Dashboard::dashboard.restoreSuccess'));
+        return redirect()->back();
+    }
+
+    public function fastEdit(Request $request) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->quickEdit($request);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors);
+            return redirect()->back()->withInput();
+        }
+
+        if($request->ajax()){
+            return \TraitsFunc::SuccessMessage(trans('Dashboard::dashboard.editSuccess'));
+        }
+
+        \Session::flash('success',trans('Dashboard::dashboard.editSuccess'));
+        return redirect()->back();
+    }
+
+    public function deleteSelected(Request $request) {
+        ${{modelNameLower}} = $this->{{modelNameLower}}Repo->deleteManyById($request);
+        if(!${{modelNameLower}}){
+            \Session::flash('error',$this->{{modelNameLower}}Repo->errors);
+            return redirect()->back()->withInput();
+        }
+
+        if($request->ajax()){
+            return \TraitsFunc::SuccessMessage(trans('Dashboard::dashboard.deleteSuccess'));
+        }
+
+        \Session::flash('success',trans('Dashboard::dashboard.deleteSuccess'));
+        return redirect()->back();
+    }
+    
+}

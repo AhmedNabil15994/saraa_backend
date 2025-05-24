@@ -1,0 +1,45 @@
+/*
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  
+=     00   00 00 00   00 00 00   00 00 00   00 00 00   00 00    =
+=     00   00    00        00    00    00   00    00   00       =
+=     00   00    00      00      00    00   00    00   00       =
+=     00   00    00    00        00    00   00    00   00       =
+=  00 00   00 00 00   00 00 00   00 00 00   00 00 00   00       =
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+*/
+
+@font-face {
+    font-family: "Tajawal-Light";
+    src:url('/assets/tenant/fonts/Tajawal-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Tajawal-Regular";
+    src:url('/assets/tenant/fonts/Tajawal-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Tajawal-Medium";
+    src:url('/assets/tenant/fonts/Tajawal-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Tajawal-Bold";
+    src: url('/assets/tenant/fonts/Tajawal-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Tajawal-ExtraBold";
+    src: url('/assets/tenant/fonts/Tajawal-ExtraBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

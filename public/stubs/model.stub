@@ -1,0 +1,28 @@
+<?php
+
+namespace {{namespace}};
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class {{modelName}} extends Model {
+    use SoftDeletes,\TraitsFunc;
+    {{fillable}}
+
+    protected $guarded = [
+        // Guarded fields here
+    ];
+
+    protected $dates = [
+        // Dates here
+    ];
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = true;
+
+    public $timestamps = true;
+
+    protected $table = '{{tableName}}';
+
+}
